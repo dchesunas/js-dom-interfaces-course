@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // До
+    var message, login = 'Вася';
+
+    if (login == 'Вася') {
+        message = 'Привет';
+    } else if (login == 'Директор') {
+        message = 'Здравствуйте';
+    } else if (login == '') {
+        message = 'Нет логина';
+    } else {
+        message = '';
+    }
+    // После
+    message = login == 'Вася' ? 'Привет' :
+        login == 'Директора' ? 'Здравствуйте' :
+            login == '' ? 'Нет логина' : '';
+</script>
+</body>
+</html>

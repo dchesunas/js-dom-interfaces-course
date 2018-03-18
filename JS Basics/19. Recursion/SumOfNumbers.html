@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Вторая по скорости
+    function sumTo(n) {
+        var result = 0;
+        for (i=0; i<=n; i++) {
+            result+= i;
+        }
+        return result;
+    }
+
+    // Организация вложенных вызовов, третья по скорости
+    function sumToRecursive(n) {
+        if (n == 1) return 1;
+        return n + sumToRecursive(n-1)
+    }
+
+    // Самая быстрая, так как всего 3 операции
+    function sumToAlgorithm(n) {
+        return n * (n + 1) / 2;
+    }
+
+    console.log(sumTo(4));
+    console.log(sumToRecursive(4));
+    console.log(sumToAlgorithm(4));
+</script>
+</body>
+</html>
