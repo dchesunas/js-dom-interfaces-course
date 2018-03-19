@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Функция это объект первого рода!
+
+    // 1. Function Drclarition
+    function fooFunc (arg1) {
+        // fooFunc();
+        return 1;
+    };
+
+    fooFunc();
+
+    // 2. Function Expression
+    let barFunc = function barFuncExpression() {
+        // barFuncExpression - рекурсия
+        // barFunc - рекурсия
+        return 2;
+    };
+
+    // barFuncExpression(); - error
+    barFunc();
+
+    let bazFunc = barFunc;
+    console.log(bazFunc());
+
+
+    // // 3. Arrow function
+    let barFuncArrow = (arg1, arg2) => 2;
+
+
+    function callWhenReady(callback) {
+        callback();
+    }
+
+    callWhenReady((arg1, arg2) => 2);
+</script>
+</body>
+</html>

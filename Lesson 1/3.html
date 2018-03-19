@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // Типы в js
+
+    // Примитивные типы
+    // 1. String
+    '1', '123455', "двойные кавычки", 'a' + 'b'
+    let variable = '123455';
+    console.log(variable[0]);
+    console.log(String(function fff() {}));
+
+
+    // 2. Number
+    // 2^51
+    1e10, 0x15, 123, 1234.1234, .1234, NaN, Infinity
+    console.log(Number('1234'))
+    console.log(Number('-5asdfasdf'))
+
+    // 3. Boolean true/false
+    console.log(Boolean(''));
+    let userName = 'Marina';
+    if (userName) {
+        userName = null;
+    }
+
+    // 4. undefined
+    let user;
+    console.log(user);
+    function fooBar(arg1) {
+        //
+    }
+    fooBar();
+
+    // 5. null
+
+    // "Сложный" тип
+    // 6. Объект
+    // все объект! функция тоже объект
+    let userObj = {
+        name: 'Marina',
+        admin: true
+    };
+
+    // 7. Symbol!!!!!! (нужен для разработчиков спецификаций и реализации)
+
+    console.log(typeof 1);
+    console.log(typeof '123');
+    console.log(typeof fooBar === 'function');
+    console.log(typeof [] === 'object');
+    console.log(typeof null === 'object');
+    console.log(typeof undefined === 'undefined');
+
+
+
+    // 1. К строке - alert(), String, null + '123', 123 + '3456'
+    // 2. К числу - арифметическую операцию. Math.pow
+    // 3. К булеану - if, логические операторы
+
+
+    let result = ('123' || 123 || 12);
+
+    if (result) {
+    }
+
+
+
+    // script.js
+    function checkUser(string) {
+        if (string) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    // main.js
+    function loginUser(validatorFunc, user) {
+        /////////
+        return validatorFunc(user);
+
+        ////
+        ////
+    }
+
+    // index.js
+    loginUser(checkUser, 'Agent Cooper');
+</script>
+</body>
+</html>

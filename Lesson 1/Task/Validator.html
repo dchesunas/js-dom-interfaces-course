@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function validateName(name) {
+        if (typeof name != 'string') {
+            return false;
+        }
+        if (name.length < 5) {
+             return false;
+        }
+        return true;
+    }
+
+    function proceedUserNameTests(userName) {
+        console.log(typeof userName === 'string');
+        console.log(userName.length <= 5);
+    }
+    
+    function loginUser() {
+        let userName = 'Колян';
+        proceedUserNameTests(userName);
+        if (validateName(userName)) {
+            alert('Authorization succeed');
+        } else {
+            alert('Authorization failed');
+        }
+    }
+
+    loginUser();
+
+</script>
+</body>
+</html>
