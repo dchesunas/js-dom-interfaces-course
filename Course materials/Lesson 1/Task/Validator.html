@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Chesunas Dmitriy dchesunas@oggettoweb.com
+
+    'use strict';
+
+    const MIN_USERNAME_LENGTH = 5;
+
+    // Validate name type and length
+    function validateName(name) {
+        return !(typeof name !== 'string' || name.length < MIN_USERNAME_LENGTH);
+
+    }
+
+    // Run tests before validation
+    function proceedUserNameTests(userName) {
+        console.log(typeof userName === 'string');
+        console.log(userName.length <= MIN_USERNAME_LENGTH);
+    }
+
+    function loginUser(userName) {
+        proceedUserNameTests(userName);
+        alert(validateName(userName) ? 'Authorization succeed' : 'Authorization failed');
+    }
+
+    loginUser('Колян');
+    loginUser('Петя');
+    loginUser(123);
+
+</script>
+</body>
+</html>

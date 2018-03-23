@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Chesunas Dmitriy dchesunas@oggettoweb.com
+
+    'use strict';
+
+    function rleEncode(string) {
+        let result = '', length = string.length;
+        for(let i = 0; i < length; i++) {
+            let j = i + 1, count = 0;
+            while (string[i] === string[j] && j < length) {
+                count++;
+                j++;
+            }
+            count = count === 1 ? '' : count;
+            result += count + string[i];
+            i = j - 1;
+        }
+        return result;
+    }
+
+    console.log(rleEncode('AABBCCC'));
+</script>
+</body>
+</html>

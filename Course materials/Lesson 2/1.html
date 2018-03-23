@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    // Объекты
+
+    const userName = 'Agent Cooper';
+    const isAdmin = true;
+
+
+    const user = {
+        name: 'Agent Cooper',
+        isAdmin: true,
+
+        friend: {
+            name: 'Agent Cooper 2',
+            isAdmin: true
+        },
+
+        isValid: function () {
+            /// .......
+        }
+    };
+
+    // dot notation
+    user.name = 'Cooper Agent';
+    user['name'] = 'user.name';
+    console.log(user.name);
+
+    // bracket notation
+    const fieldName = 'name';
+    console.log(user.fieldName);
+
+    // console.log(user.FRIEND);
+</script>
+</body>
+</html>

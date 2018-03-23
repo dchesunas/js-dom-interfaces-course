@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    // Передача по ссылке и значению
+
+
+    let userName = 'Agent Cooper';
+    let userName2 = 'Agent Cooper';
+
+    userName = 'Лоролфыва';
+
+
+    console.log(userName2, userName)
+
+    // 0xasdfasdf
+
+    let user1 = {
+        name: 'Agent Cooper',
+        object: {
+            a: 1
+        }
+    }
+
+    let user2 = user1;
+
+    user2 = user1.object;
+
+    console.log(user2);
+    user2.a = 'changed';
+    console.log(user1.object.a)
+
+    let user3 = user1;
+    let user4 = user1;
+    let user5 = user1;
+
+    user1.object = 'New name';
+
+    console.log(user5.object)
+</script>
+</body>
+</html>
