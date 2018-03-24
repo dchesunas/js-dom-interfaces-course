@@ -11,21 +11,20 @@
     'use strict';
 
     function rleEncode(string) {
-        let result = '', length = string.length;
+        let output = '', length = string.length;
         for(let i = 0; i < length; i++) {
-            let j = i + 1, count = 0;
+            let j = i + 1, count = 1;
             while (string[i] === string[j] && j < length) {
-                count++;
-                j++;
+                count++; j++;
             }
-            count = count === 1 ? '' : count;
-            result += count + string[i];
+            output += count === 1 ? string[i] : string[i] + count;
             i = j - 1;
         }
-        return result;
+        return output;
     }
 
-    console.log(rleEncode('AABBCCC'));
+    console.log(rleEncode('AAAB'));
+    console.log(rleEncode('BCCDDDAXXXX'));
 </script>
 </body>
 </html>
