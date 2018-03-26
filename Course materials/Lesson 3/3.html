@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    let NEW_FIELD = 'new field';
+    let name = 'Agent Cooper';
+    let age = 20;
+
+    // esnext!
+    let cat = {
+        [NEW_FIELD]: 'asdass',
+
+        name,
+        age,
+
+        isValid() {
+            //// ....
+        }
+    };
+
+    cat.legs = 4;
+    cat.ears = 2;
+    cat.home = true;
+
+    console.log(cat.legs);
+    console.log(Object.keys(cat));
+
+    // delete cat.legs;
+    // cat.legs = null;
+    console.log(cat.legs);
+    console.log(Object.keys(cat));
+
+    console.log(Object.assign({},{a:1}, {b:2, a:3}));
+
+    // for (let key in cat) {
+    //     console.log(cat[key]);
+    // }
+
+    // // Number.isNaN
+    // console.log(Object.keys(cat))
+    // console.log(Object.values(cat))
+    // console.log(Object.entries(cat))
+</script>
+</body>
+</html>

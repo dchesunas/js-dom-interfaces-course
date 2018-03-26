@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let user = {
+        name: 'User',
+        hello: function(person) {
+            console.log('Привет ' + person.name + ',' + 'Я ' + this.name);
+        }
+    };
+
+    let person = {
+        name: 'Person',
+        hello: function(user) {
+            console.log('Привет ' + user.name + ',' + 'Я ' + this.name);
+        }
+    };
+
+    user.hello(person);
+    person.hello(user);
+
+</script>
+</body>
+</html>

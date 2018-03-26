@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+
+
+    const a = ['Привет', '', {name: 'Marina'}, 'мир', '!', ''];
+
+    // for (let ley in a)
+    for (let value of a) {
+        console.log(value);
+    }
+
+    // map, reduce, filter
+
+    const result = a.map((value, index, arr) => {
+        // console.log(value, index, arr);
+        // мир
+
+        if (typeof value === 'object') {
+            value.name = 'TEST';
+
+            return value;
+        }
+
+
+        return value.toUpperCase();
+    }).filter((value, index, arr) => {
+
+
+        // МИР
+        return Boolean(value);
+    }).reduce(function (res, value, index, arr) {
+        return res + value;
+    }, '');
+
+
+    console.log(a);
+    console.log(result);
+</script>
+</body>
+</html>
