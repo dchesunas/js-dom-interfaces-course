@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let firstObject = {
+        123: 123,
+        lala: {
+            lol: {
+                1: 1
+            }
+        }
+    };
+
+    let secondObject = {
+        123: 123,
+        lala: {
+            lol: {
+                1:1
+            }
+        }
+    };
+
+    let thirdObject = {
+        123: 123,
+        lala: {
+            lol: {
+                1:2
+            }
+        }
+    };
+
+    console.log(compareObjects(firstObject, secondObject));
+    console.log(compareObjects(firstObject, thirdObject));
+
+    function compareObjects(obj1, obj2) {
+        return JSON.stringify(obj1) === JSON.stringify(obj2);
+    }
+
+</script>
+
+</body>
+</html>

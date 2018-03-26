@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    const SPAM_WORDS = ['XXX', 'viagra'];
+
+    console.log(checkSpam('buy ViAgRA now'));
+    console.log(checkSpam('free xxxxx'));
+    console.log(checkSpam('innocent rabbit'));
+
+
+    function checkSpam(string) {
+
+        string = string.toUpperCase();
+        let isSpam = false;
+        SPAM_WORDS.forEach(function (item) {
+            console.log(item.toUpperCase());
+            if (string.includes(item.toUpperCase())) {
+                return isSpam = true;
+            }
+        });
+        return isSpam;
+    }
+
+</script>
+</body>
+</html>

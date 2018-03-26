@@ -12,27 +12,29 @@
 
     const MIN_USERNAME_LENGTH = 5;
 
+    processUserNameTests();
+    loginUser('Kolya');
+    loginUser('Petr');
+    loginUser(123);
+
+
+    function loginUser(userName) {
+         let isValid = validateName(userName);
+        // write login logic
+    }
+
     // Validate name type and length
     function validateName(name) {
-        return !(typeof name !== 'string' || name.length < MIN_USERNAME_LENGTH);
+        return typeof name === 'string' && name.length >= MIN_USERNAME_LENGTH;
 
     }
 
     // Run tests before validation
-    function proceedUserNameTests(userName) {
-        console.log(typeof userName === 'string');
-        console.log(userName.length <= MIN_USERNAME_LENGTH);
+    function processUserNameTests() {
+        console.log(validateName('Kolya') === true);
+        console.log(validateName('Petr') === false);
+        console.log(validateName(123) === false);
     }
-
-    function loginUser(userName) {
-        proceedUserNameTests(userName);
-        alert(validateName(userName) ? 'Authorization succeed' : 'Authorization failed');
-    }
-
-    loginUser('Колян');
-    loginUser('Петя');
-    loginUser(123);
-
 </script>
 </body>
 </html>
