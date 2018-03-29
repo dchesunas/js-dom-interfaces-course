@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+Задача из 5 шагов-строк:
+
+Создайте массив styles с элементами «Джаз», «Блюз».
+Добавьте в конец значение «Рок-н-Ролл»
+Замените предпоследнее значение с конца на «Классика». Код замены предпоследнего значения должен работать для массивов любой длины.
+Удалите первое значение массива и выведите его alert.
+Добавьте в начало значения «Рэп» и «Регги».
+
+<script>
+    let goods = ['Джаз', 'Блюз'];
+    goods.push('Рок-н-Ролл');
+    goods[goods.length - 2] = 'Классика';
+    alert(goods[0]);
+    goods.shift();
+    goods.unshift('Рэп', 'Регги');
+    alert(goods);
+</script>
+</body>
+</html>

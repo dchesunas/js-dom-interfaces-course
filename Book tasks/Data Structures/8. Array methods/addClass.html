@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+В объекте есть свойство className, которое содержит список «классов» – слов, разделенных пробелом:
+
+var obj = {
+className: 'open menu'
+}
+Создайте функцию addClass(obj, cls), которая добавляет в список класс cls, но только если его там еще нет:
+
+Remove class по аналогии
+<script>
+    var obj = {
+        className: 'open menu',
+        addClass: function (className) {
+            let classNames = this.className.split(' '),
+                isReserved = false;
+            classNames.forEach(function (item) {
+                if (item === className) {
+                    isReserved = true;
+                }
+            });
+            if (!isReserved) {
+               classNames.push(className);
+               this.className = classNames.join(' ');
+            }
+        }
+    };
+
+    console.log(obj);
+    obj.addClass('lala');
+    console.log(obj);
+
+</script>
+</body>
+</html>
