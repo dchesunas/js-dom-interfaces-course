@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+Напишите код, который отсортирует массив объектов people по полю age.
+<script>
+    let vasya = { name: "Вася", age: 23 };
+    let masha = { name: "Маша", age: 18 };
+    let vovochka = { name: "Вовочка", age: 6 };
+
+    let people = [ vasya , masha , vovochka ];
+
+    //Аналогично тому как сортировали массив
+
+    function inverseSort(Human1, Human2) {
+        return Human1.age - Human2.age;
+    }
+    people.sort(inverseSort);
+
+    // теперь people: [vovochka, masha, vasya]
+    alert(people[0].age) // 6
+
+</script>
+</body>
+</html>

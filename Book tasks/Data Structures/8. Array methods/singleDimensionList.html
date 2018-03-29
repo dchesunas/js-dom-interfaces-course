@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+Задачи:
+
+Напишите функцию printList(list), которая выводит элементы списка по очереди, при помощи цикла.
+Напишите функцию printList(list) при помощи рекурсии.
+Напишите функцию printReverseList(list), которая выводит элементы списка в обратном порядке, при помощи рекурсии. Для списка выше она должна выводить 4,3,2,1
+Сделайте вариант printReverseList(list), использующий не рекурсию, а цикл.
+<script>
+    let list = { value: 1 };
+    list.next = { value: 2 };
+    list.next.next = { value: 3 };
+    list.next.next.next = { value: 4 };
+    list.printList = function () {
+        let tmp = this;
+        do {
+            console.log(tmp.value);
+            tmp = tmp.next;
+        } while (tmp);
+    };
+
+    list.recursivePrint = function (passSteps = 0) {
+        let tmp = this, i = 0;
+        while (i < passSteps) {
+            tmp = tmp.next;
+            i++;
+        }
+        if (tmp) {
+            console.log(tmp.value);
+            this.recursivePrint(++passSteps);
+        }
+    };
+
+
+    // Сложно написать обратную рекурсию через метод объекта
+
+    function recursiveRevers(list) {
+        if (list.next) {
+            recursiveRevers(list.next);
+        }
+        console.log(list.value);
+    }
+
+
+    function reverseCycle(list) {
+        let arr = [];
+        let tmp = list;
+        do {
+            arr.push(tmp.value);
+            tmp = tmp.next;
+        } while (tmp);
+
+        arr.reverse().forEach(function (item) {
+            console.log(item);
+        });
+    }
+
+    // list.printList();
+    // list.recursivePrint();
+    // recursiveRevers(list);
+    // reverseCycle(list);
+
+</script>
+</body>
+</html>
