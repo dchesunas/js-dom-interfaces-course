@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    // 1. через объекты
+    // function unique(arr) {
+    //     const store = {};
+
+    //     arr.forEach((value) => {
+    //         store[value] = true;
+    //     });
+
+    //     return Object.keys(store);
+    // }
+
+
+    // 2. через обход массива
+    // function unique(arr) {
+    //     const result = [];
+
+    //     arr.forEach((value, index, array) => {
+    //         if (!array.includes(value, index + 1)) {
+    //             result.push(value);
+    //         };
+    //     });
+
+    //     return result;
+    // }
+
+    // function unique(arr) {
+    //      let arrTemp = [];
+    //      for (let i = 0; i < arr.length; i++) {
+    //       if (arrTemp.indexOf(arr[i]) == -1) {
+    //          arrTemp.push(arr[i]);
+    //       }
+    //      }
+    //      return arrTemp;
+    //   }
+
+    // function unique(arr) {
+    //     // Map set(''), get
+    // }
+
+
+    function unique(arr) {
+        return Array.from((new Set(arr)));
+    }
+
+
+    const arr = ['привет', 'пока', 'привет'];
+
+    console.log(unique(arr))
+</script>
+</body>
+</html>

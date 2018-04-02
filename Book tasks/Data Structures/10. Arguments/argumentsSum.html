@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f() {
+        let result = 0;
+        for(let i = 0; i < arguments.length; i++) {
+            result += arguments[i];
+        }
+        return result;
+    }
+
+    console.log(f(1,2,3,4,5)); // 15
+    console.log(f(0)); // 0
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f(x) {
+        return Boolean(arguments.length);
+//        Не можем использовать это, оба undefined
+//        return x === undefined;
+    }
+
+    console.log(f(undefined)); // 1
+    console.log(f()); // 0
+</script>
+</body>
+</html>

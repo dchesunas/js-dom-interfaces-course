@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function randomArray(n) {
+        let result = [];
+        for (let i = 0; i < n; i++) {
+            result.push(Math.round(Math.random() * 100));
+        }
+        return result;
+    }
+
+    console.log(randomArray(10));
+
+</script>
+</body>
+</html>

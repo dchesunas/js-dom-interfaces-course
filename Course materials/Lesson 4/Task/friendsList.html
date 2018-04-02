@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <!--<script src="https://js.cx/test/libs.js"></script>-->
+
+</head>
+
+<body>
+<h1>Hello JavaScript!</h1>
+
+<script>
+    'use strict';
+
+    /**
+     * @typedef {Friend}
+     * @prop {string} firstName
+     * @prop {string} lastName
+     */
+
+    let friends = [
+        {
+            firstName: 'Artsiom',
+            lastName: 'Mezin'
+        },
+        {
+            firstName: 'Ilia',
+            lastName: 'Kantor'
+        },
+        {
+            firstName: 'Christopher',
+            lastName: 'Michael'
+        }
+    ];
+
+    /**
+     * Генерация HTML списка друзей
+     * @param {Friend[]} friends
+     * @return {HTMLUListElement}
+     */
+    function makeFriendsList (friends) {
+        // реализуйте функцию, формирующую HTML список пользователей
+        // по массиву с объектами
+        let elements = document.createElement('ul');
+        friends.forEach(function (friend) {
+            let newFriend = document.createElement('li'),
+                newFriendName = document.createTextNode(friend.firstName + friend.lastName);
+            newFriend.append(newFriendName);
+            elements.append(newFriend);
+        });
+        console.log(elements);
+        return elements;
+    }
+
+    document.body.append(makeFriendsList(friends));
+</script>
+
+
+<!--<script src="script.js"></script>-->
+<!--<script src="test.js"></script>-->
+</body>
+
+</html>
