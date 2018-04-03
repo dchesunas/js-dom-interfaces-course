@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table, td {
+            border: 1px solid #cecece;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="js-app">
+    <h3 class="name"></h3>
+    <div class="friends"></div>
+    <table>
+        <tr>
+            <th onclick="colorizeProfile(table)">key</th>
+            <th>value</th>
+        </tr>
+    </table>
+</div>
+<script>
+
+    'use strict';
+
+    function getRandomColor () {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    const profile = {
+        age: 28,
+        isMale: true,
+        nickname: 'iketari',
+        karma: null,
+        role: 'admin'
+    };
+
+
+    function fillProfileTable (table) {
+        for (let key in profile) {
+            let row = document.createElement('tr');
+            let cellKey = document.createElement('td');
+            let cellValue = document.createElement('td');
+
+            cellKey.textContent = key;
+            cellValue.textContent = profile[key];
+            row.append(cellKey, cellValue);
+            table.append(row);
+        }
+    }
+
+
+    function colorizeProfile(table) {
+        for (let i = 0; i < table.rows.length; i++) {
+            for (let j = 0; j < table.rows[i].cells.length; j++) {
+                table.rows[i].cells[j].style.backgroundColor = getRandomColor();
+            }
+        }
+    }
+
+    let table = document.querySelector('table');
+    fillProfileTable(table);
+
+</script>
+</body>
+
+</html>
