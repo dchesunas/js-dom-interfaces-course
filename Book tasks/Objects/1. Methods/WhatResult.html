@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    let arr = ["a", "b"];
+
+    arr.push(function() {
+        alert( this );
+    });
+
+    arr[2](); // ?
+
+</script>
+</body>
+</html>

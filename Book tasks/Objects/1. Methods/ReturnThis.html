@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+
+    var name = "";
+
+    var user = {
+        name: "Василий",
+
+        export: function() {
+            return this;
+        }
+
+    };
+
+    alert( user.export().name );
+
+
+    //Выведет Василий, так как мы используем функцию внутри объекта, то контекст у нее объект
+</script>
+</body>
+</html>
