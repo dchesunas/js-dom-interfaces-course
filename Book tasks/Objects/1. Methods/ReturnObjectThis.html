@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+
+    // Василий, так как user.export().value == user
+    var name = "";
+
+    var user = {
+        name: "Василий",
+
+        export: function() {
+            return {
+                value: this
+            };
+        }
+
+    };
+
+    alert( user.export().value.name );
+</script>
+</body>
+</html>

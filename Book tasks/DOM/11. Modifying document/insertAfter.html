@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>Это</div>
+<div>Элементы</div>
+
+<script>
+    let elem = document.createElement('div');
+    elem.innerHTML = '<b>Новый элемент</b>';
+
+    function insertAfter(elem, refElem) {
+        body.insertBefore(elem, refElem.nextElementSibling);
+    }
+
+    let body = document.body;
+
+    elem2 = elem.cloneNode(true);
+
+    // вставить elem после первого элемента
+    insertAfter(elem, body.firstChild); // <--- должно работать
+
+    // вставить elem за последним элементом
+    insertAfter(elem2, body.lastChild); // <--- должно работать
+</script>
+</body>
+</html>

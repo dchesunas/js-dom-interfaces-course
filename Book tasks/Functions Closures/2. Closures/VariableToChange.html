@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    var value = 0;
+
+    // В данном случае внешняя переменная не изменяется, так как в определении функции есть ключевое слово var,
+    // поэтому переменная заносится в LE функции. Если убрать var, то будет изменяться глобальная переменная
+    function f() {
+        if (1) {
+            value = true;
+        } else {
+            var value = false;
+        }
+
+        alert( value );
+    }
+
+    f();
+</script>
+</body>
+</html>

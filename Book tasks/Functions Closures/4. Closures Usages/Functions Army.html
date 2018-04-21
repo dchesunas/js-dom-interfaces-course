@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    // Достаточно заменить var на let в цикле, чтобы i действовала только в его пределах и не будет всплытия
+    function makeArmy() {
+        let shooters = [];
+
+        for (let i = 0; i < 10; i++) {
+            let shooter = function() { // функция-стрелок
+                alert( i ); // выводит свой номер
+            };
+            shooters.push(shooter);
+        }
+
+        return shooters;
+    }
+
+    let army = makeArmy();
+
+    army[0](); // стрелок выводит 10, а должен 0
+    army[5](); // стрелок выводит 10...
+    // .. все стрелки выводят 10 вместо 0,1,2...9
+</script>
+</body>
+</html>

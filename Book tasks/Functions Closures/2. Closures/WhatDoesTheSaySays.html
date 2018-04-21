@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    say('Вася'); // Выведет Вася, Привет Так как всплытие у var и при вызове еще undefined
+
+    var phrase = 'Привет';
+
+    function say(name) {
+        alert( name + ", " + phrase );
+    }
+</script>
+</body>
+</html>

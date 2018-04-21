@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    function test() {
+        // Так как есть var, то undefined
+        alert( window );
+
+        var window = 5;
+
+        // Затем локальная 5
+        alert( window );
+    }
+    test();
+</script>
+</body>
+</html>

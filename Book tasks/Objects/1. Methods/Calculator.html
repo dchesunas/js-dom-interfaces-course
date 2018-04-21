@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    let calculator = {
+        read: function () {
+            this.a = Number(prompt('Введите 1 число'));
+            this.b = Number(prompt('Введите 2 число'));
+        },
+        sum: function () {
+            return this.a + this.b;
+        },
+        mul: function () {
+            return this.a * this.b;
+        }
+    };
+
+    calculator.read();
+    alert( calculator.sum() );
+    alert( calculator.mul() );
+
+</script>
+</body>
+</html>

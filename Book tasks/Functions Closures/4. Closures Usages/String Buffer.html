@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    function makeBuffer() {
+        let currentBuffer = '';
+        function buffer(value) {
+
+            if (value !== undefined) {
+                value = String(value);
+                currentBuffer += value;
+            }
+            return currentBuffer;
+        }
+        buffer.clear = function () {
+          currentBuffer = '';
+        };
+        return buffer;
+
+    }
+
+    let buffer = makeBuffer();
+
+    // добавить значения к буферу
+    buffer(0);
+    buffer(1);
+    buffer(0);
+
+    // получить текущее значение
+    alert( buffer() ); // 010
+
+    buffer.clear();
+
+    alert(buffer()); // ''
+</script>
+</body>
+</html>

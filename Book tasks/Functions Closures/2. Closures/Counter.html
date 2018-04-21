@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+    var currentCount = 1;
+
+    function makeCounter() {
+        return function() {
+            return currentCount++;
+        };
+    }
+
+    var counter = makeCounter();
+    var counter2 = makeCounter();
+
+    alert( counter() ); // 1
+    alert( counter() ); // 2
+
+    alert( counter2() ); // 3
+    alert( counter2() ); // 4
+
+    // Такой результат, потому что переменная в window и по замыканию мы увеличиваем ее значение
+</script>
+</body>
+</html>
