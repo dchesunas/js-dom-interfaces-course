@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .hour {
+            color: red
+        }
+
+        .min {
+            color: green
+        }
+
+        .sec {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>"Часики" как объект</h3>
+<p>
+    Реализуйте часики как один объек со следующими методами:
+</p>
+
+<div id="clock">
+    <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+</div>
+
+<input id="stopClock" type="button" value="Stop">
+
+<script>
+    'use strict';
+
+    const clockDiv = document.querySelector('#clock');
+    const stopBtn = document.querySelector("#stopClock");
+
+    const hour = clockDiv.querySelector('.hour');
+    const min = clockDiv.querySelector('.min');
+    const sec = clockDiv.querySelector('.sec');
+
+    let intervalID;
+
+    const clock = {
+        /**
+         * Запуск часиков
+         */
+        start () {
+            intervalID = setInterval(this.update, 1000);
+        },
+
+        /**
+         * Остановка часиков
+         */
+        stop () {
+            clearInterval(intervalID);
+        },
+
+        update () {
+            let d = new Date();
+            hour.innerText = d.getHours();
+            min.innerText = d.getMinutes();
+            sec.innerText = d.getSeconds();
+        },
+
+    };
+
+    stopBtn.onclick = function() {
+        clock.stop();
+    };
+
+    clock.start();
+</script>
+
+</body>
+
+</html>

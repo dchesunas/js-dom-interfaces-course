@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    'use strict';
+    // Lexical Environment = {
+    // // content: {
+    //        name: 'Олег',
+    //        getName: ///// fu.
+    //     },
+    //    global: null;
+    // }
+    let name = 'Пётр';
+
+
+
+    // Lexical Environment {
+    // content:{
+    // arg1: -> ..., arg2 -> ....,
+    // inner_function: ->
+    // local_variable = 5;
+    //  -> global LE
+    // }
+
+    // функция фабрика
+    function secretStore() {
+        let info = 'super secret';
+
+        function getInfo() {
+            return info;
+        }
+
+        function setInfo(new_info) {
+            info = new_info;
+        }
+
+        return {
+            getInfo,
+            setInfo,
+        }
+    }
+
+    const store1 = secretStore();
+
+    const store = secretStore();
+
+    console.log(store.getInfo());
+    console.log(store.setInfo('new!!'));
+    console.log(store.getInfo());
+    console.log(store1.getInfo());
+
+</script>
+</body>
+</html>

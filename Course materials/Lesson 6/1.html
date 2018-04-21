@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+
+    let a = 0;
+
+    function test (a, b) {
+        console.log(this);
+        console.log('Привет!', a, b);
+    };
+
+    test();
+
+    setTimeout(() => {
+        console.log('2')
+    }, 0);
+
+    console.log('1');
+
+
+    let id = setTimeout(test, 10000, 1, 2);
+    clearTimeout(id);
+
+    let intervalId = setInterval(test, 1000, 3, 4);
+    clearInterval(intervalId);
+    console.log('3')
+
+</script>
+</body>
+</html>
