@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .hour {
+            color: red
+        }
+
+        .min {
+            color: green
+        }
+
+        .sec {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>"Часики" как объект</h3>
+<p>
+    Реализуйте часики как один объек со следующими методами:
+</p>
+
+
+<script>
+    'use strict';
+
+    function twoSymbolsString(num) {
+        if (String(num).length < 2) return '0' + num;
+        return num;
+    }
+
+    function clockFabric(){
+        //создаем див для часов и спаны для ч/м/с
+        let clockConteiner = document.createElement('div');
+        clockConteiner.style.marginBottom = '20px';
+
+        let clock = document.createElement('div');
+        clockConteiner.append(clock);
+
+        let hour = document.createElement('span');
+        hour.classList.add('hour');
+        hour.append( document.createTextNode('hh') );
+        clock.append(hour);
+        clock.append( document.createTextNode(':') );
+
+        let min = document.createElement('span');
+        min.classList.add('min');
+        min.append( document.createTextNode('mm') );
+        clock.append(min);
+        clock.append( document.createTextNode(':') );
+
+        let sec = document.createElement('span');
+        sec.classList.add('sec');
+        sec.append( document.createTextNode('ss') );
+        clock.append(sec);
+
+        //создаем кнопки старт/стоп
+        let startBtn = document.createElement('input');
+        startBtn.type = 'button';
+        startBtn.value = 'start';
+        clockConteiner.append(startBtn);
+
+        let stopBtn = document.createElement('input');
+        stopBtn.type = 'button';
+        stopBtn.value = 'stop';
+        clockConteiner.append(stopBtn);
+
+        document.body.append(clockConteiner);
+
+        //создаем методы для работы с часами
+        function start() {
+            if (this.timerId === null) {
+                let date = new Date();
+                this.hour.firstChild.data = twoSymbolsString(date.getHours());
+                this.min.firstChild.data = twoSymbolsString(date.getMinutes());
+                this.sec.firstChild.data = twoSymbolsString(date.getSeconds());
+                this.timerId = setInterval( () => this.update(), 200);
+            }
+        }
+
+        function stop() {
+            clearInterval(this.timerId);
+            this.timerId = null;
+        }
+
+        function update () {
+            let date = new Date();
+            this.hour.firstChild.data = twoSymbolsString(date.getHours());
+            this.min.firstChild.data = twoSymbolsString(date.getMinutes());
+            this.sec.firstChild.data = twoSymbolsString(date.getSeconds());
+        }
+
+        let clockObject = {
+            hour, min, sec,
+            startBtn,
+            start, stop, update,
+            timerId: null
+        };
+
+        startBtn.addEventListener('click', () => {clockObject.start()} );
+        stopBtn.addEventListener('click', () => {clockObject.stop()} );
+        return clockObject;
+    }
+
+    let clocks = [];
+    for (let i = 0; i < 5; i++) {
+        let clock = clockFabric();
+        clocks.push(clock);
+    }
+
+    console.log(clocks);
+</script>
+
+</body>
+
+</html>

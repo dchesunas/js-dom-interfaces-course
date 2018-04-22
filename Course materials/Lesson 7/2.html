@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+
+    function sum (arg1, arg2) {
+        return arg1 + arg2;
+    }
+
+    function perfomanceDecorator(func) {
+        return function (arg1, arg2) {
+            // померять время
+            const t1 = Date.now();
+            const result = func(arg1, arg2);
+            const t2 = Date.now();
+
+            console.log(t2 - t1);
+            return result;
+        }
+    }
+
+    function logger(func) {
+        return function (arg1, arg2) {
+            console.log('вызвана функция', func.name);
+            console.log('аргумент', arg1, arg2);
+            const result = func(arg1, arg2);
+            console.log('результат', result);
+
+            return result;
+        }
+    }
+
+
+
+    const loggedSum = logger(sum);
+    const perfLoggedSum = perfomanceDecorator(loggedSum);
+
+    const result = sum(1, 2);
+
+</script>
+</body>
+</html>

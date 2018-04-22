@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .expired {
+            color: red;
+            text-decoration: line-through;
+        }
+
+        .almost-expired {
+            color: #ff9f1f;
+        }
+    </style>
+</head>
+
+<body>
+<script>
+
+
+    // только для чисел
+    function sum (arg1, arg2) {
+        return arg1 + arg2;
+    }
+
+    // 1 + 3 = 4
+    function cache(func) {
+
+        let caches = {};
+
+        return function (arg1, arg2) {
+            console.log(caches);
+            let cacheKey = String(arg1) + String(arg2);
+            if (cacheKey in caches) {
+                return caches[cacheKey];
+            }
+            let result = func(arg1, arg2);
+            caches[cacheKey] = result;
+            return result;
+        }
+    }
+
+    cache(sum)(1,2);
+    cache(sum)(1,3);
+    let cachedSum = cache(sum);
+    cachedSum(1,2);
+    cachedSum(0,3);
+    cachedSum(1,2);
+</script>
+</body>
+
+</html>
