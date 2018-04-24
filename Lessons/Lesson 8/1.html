@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+
+
+    // this;
+    let a = 1;
+
+    console.log(this === window);
+
+
+    function whoIsThis() {
+        // a - знаю
+        // this - не знаю
+        console.log(this);
+    }
+
+    // 1. window || undefined
+    // this === undefined
+    whoIsThis();
+
+
+    // 2. this === obj. через точку
+
+    let user = {
+        name: 'Объект',
+        whoIsThis,
+    }
+
+    user.whoIsThis();
+
+    function test () {
+    }
+
+    test.whoIsThis = whoIsThis;
+    test.whoIsThis();
+
+
+    // 3. call / apply
+
+    // вызывает сразу с новым контекстом
+    user.whoIsThis.call({
+        name: 'Another object'
+    });
+
+    user.whoIsThis.apply({
+        name: 'Another object'
+    });
+
+    // создает новую функцию
+    const helloBinded = user.whoIsThis.bind({
+        name: 'Binded object'
+    });
+
+    user.helloBinded = helloBinded;
+    user.helloBinded();
+
+
+
+    // 4. this new Func();
+    // функция конструктор
+    function Сlock({start = 0, timezone = '0'} = {}) {
+        // this = { };
+        this.start = start;
+        this.timezone = timezone;
+
+        this.array = [
+            1, 2, 3, 4
+        ].map((item) => {
+            // this
+            // arguments item
+            this.start
+        });
+
+        // 5. arrow function
+        const arrow = () => {
+            // this
+        }
+
+        this.start = function () {
+            console.log('go go go go!');
+        }
+    }
+
+    const clock1 = new Сlock({
+        // start: 1,
+        new_field: 123,
+        // timezone: '+5',
+    });
+
+    // const clock2 = clock(1, '+3');
+
+
+    // 5. arrow function
+    // нет this
+    // нет arguments
+    // нельзся вызывать через new
+
+    // 6. button.onclick = function () {
+    // this  === button
+    //}
+
+</script>
+</body>
+</html>

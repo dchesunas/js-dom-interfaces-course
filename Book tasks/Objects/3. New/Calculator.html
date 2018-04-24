@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+
+    function Calculator() {
+
+        let operations = {
+            '+': function (a, b) {
+                return parseInt(a) + parseInt(b);
+            },
+            '-': function (a, b) {
+                return a - b;
+            }};
+
+        function getOperation(pattern) {
+            return pattern.slice(2, pattern.length - 2);
+        }
+
+        this.calculate = function(pattern) {
+            let a = pattern[0],
+                b = pattern[pattern.length - 1],
+                operation = getOperation(pattern);
+            return operations[operation].call(this, a, b);
+        };
+
+        this.addMethod = function (operation, func) {
+            operations[operation] = func;
+        }
+
+    }
+    let calc = new Calculator;
+
+    alert( calc.calculate("3 + 7") ); // 10
+
+    calc.addMethod("*", function(a, b) {
+        return a * b;
+    });
+    calc.addMethod("/", function(a, b) {
+        return a / b;
+    });
+    calc.addMethod("**", function(a, b) {
+        return Math.pow(a, b);
+    });
+
+    let result = calc.calculate("2 ** 3");
+    alert( result ); // 8
+
+</script>
+</body>
+</html>

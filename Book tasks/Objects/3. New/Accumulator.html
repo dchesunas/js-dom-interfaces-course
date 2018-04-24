@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+</head>
+<body>
+<script>
+
+    function Accumulator(stringValue) {
+        if (!this.value) {
+            this.value = stringValue;
+        }
+
+        this.read = function(value) {
+            this.value += value;
+        };
+    }
+
+    let accumulator = new Accumulator(5);
+    accumulator.read(1);
+    accumulator.read(2);
+    alert( accumulator.value );
+</script>
+</body>
+</html>

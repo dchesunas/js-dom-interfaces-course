@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+<script>
+
+    'use strict';
+
+    function Calculator() {
+        this.sum = function sum(a, b) {
+            return a + b;
+        };
+
+        this.mul = function mul(a, b) {
+            return a * b;
+        };
+    }
+
+    let calculator = new Calculator();
+
+    alert(calculator.sum(2, 3));
+    alert(calculator.mul(2, 3));
+</script>
+</body>
+
+</html>

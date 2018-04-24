@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <input type="number" id="jsInputField" placeholder="0">
+    <button id="jsSumButton">+</button>
+    <button id="jsMinusButton">-</button>
+    <button id="jsPowButton">*</button>
+    <button id="jsDivideButton">/</button>
+    <br>
+    Result: <span id="result">0</span>
+    <br>
+    <button id="jsClearAll">Очистить</button>
+
+
+<script>
+    // Специфический калькулятор)  Работаем с одним числом, которое вбили. Можно смоделировать работу обычного.
+    // Запоминается последний результат и следующая операция берет его как первый аргумент автоматически
+
+    let calculator = new function Calculator() {
+        this.lastValue = 0;
+        prepareEvents();
+        this.processResult = function () {
+            document.getElementById('result').innerText = this.lastValue;
+        };
+        this.setValue = function (value) {
+          if (isNaN(value)) return;
+          this.lastValue = value;
+        };
+        this.getValue = function () {
+          return this.lastValue;
+        };
+        this.clear = function () {
+            this.setValue(0);
+            document.getElementById('jsInputField').value = '';
+            document.getElementById('result').innerText = '';
+        };
+
+        function prepareEvents() {
+            document.getElementById('jsSumButton').onclick = function () {
+                console.log(document.getElementById('jsInputField').value);
+                calculator.setValue(calculator.getValue() + parseInt(document.getElementById('jsInputField').value));
+                calculator.processResult();
+            };
+            document.getElementById('jsMinusButton').onclick = function () {
+                calculator.setValue(calculator.getValue() - parseInt(document.getElementById('jsInputField').value));
+                calculator.processResult();
+            };
+            document.getElementById('jsPowButton').onclick = function () {
+                calculator.setValue(calculator.getValue() * parseInt(document.getElementById('jsInputField').value));
+                calculator.processResult();
+            };
+            document.getElementById('jsDivideButton').onclick = function () {
+                calculator.setValue(calculator.getValue() / parseInt(document.getElementById('jsInputField').value));
+                calculator.processResult();
+            };
+            document.getElementById('jsClearAll').onclick = function () {
+                calculator.clear();
+            };
+        }
+    };
+
+
+
+</script>
+</body>
+
+</html>
