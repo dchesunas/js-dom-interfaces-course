@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Где семантика???</title>
+    <meta charset="utf-8">
+    <style>
+        /*+ hide="Результат со стилями (показать стили)" */
+        .rounded-horizontal-blocks .item {
+            float: left;
+            padding: 6px;
+            margin: 0 2px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 90%;
+            background: #FFF5EE;
+        }
+
+        .vertical-splitter {
+            float: left;
+            padding: 6px;
+            margin: 0 2px;
+        }
+
+        .item:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="rounded-horizontal-blocks"> <!--Класс должен описывать объект, а не вид-->
+    <div class="item">Главная</div> <!--Ну и все айтемы через __ -->
+    <div class="vertical-splitter">|</div> <!--Разделитель тоже item можно сделать через модификатор-->
+    <div class="item">Товары</div>
+    <div class="item">Фотографии</div>
+    <div class="item">Контакты</div>
+</div>
+
+
+<!--Ошибся. 1 теги по назначению-->
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Голосовалка</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<div id="voter" class="voter">
+    <span class="down">—</span>
+    <span class="vote">0</span>
+    <span class="up">+</span>
+</div>
+
+<script>
+   function Voter(options) {
+       let elem = options.elem;
+       let currentVotes = 0;
+
+       initEvents();
+
+
+       function render() {
+           elem.getElementsByClassName('vote')[0].innerHTML = currentVotes;
+       }
+
+       function initEvents() {
+           elem.getElementsByClassName('down')[0].onclick = function () {
+                setVote(--currentVotes);
+           };
+           elem.getElementsByClassName('up')[0].onclick = function () {
+                setVote(++currentVotes);
+           };
+       }
+
+       function setVote(votes) {
+           currentVotes = votes;
+           render();
+       }
+       this.setVote = setVote;
+
+   }
+
+    let voter = new Voter({
+        elem: document.getElementById('voter')
+    });
+
+   voter.setVote(5);
+</script>
+
+</body>
+
+</html>

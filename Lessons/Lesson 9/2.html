@@ -1,50 +1,29 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src="view.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
-<script>
+<div id="container">
+    <!-- корзина....-->
+    <div>
+      <span>
+        Номер
+      </span>
+        <span>
+        Товар
+      </span>
+        <span>
+        Цена
+      </span>
+    </div>
+</div>
 
-
-    function sum (arg1, arg2) {
-        return arg1 + arg2;
-    }
-
-    function perfomanceDecorator(func) {
-        return function (arg1, arg2) {
-            // померять время
-            const t1 = Date.now();
-            const result = func(arg1, arg2);
-            const t2 = Date.now();
-
-            console.log(t2 - t1);
-            return result;
-        }
-    }
-
-    function logger(func) {
-        return function (arg1, arg2) {
-            console.log('вызвана функция', func.name);
-            console.log('аргумент', arg1, arg2);
-            const result = func(arg1, arg2);
-            console.log('результат', result);
-
-            return result;
-        }
-    }
-
-
-
-    const loggedSum = logger(sum);
-    const perfLoggedSum = perfomanceDecorator(loggedSum);
-
-    const result = sum(1, 2);
-
+<script type="text/javascript" charset="utf-8">
+    const cartView = new CartView(container, cart);
 </script>
 </body>
+
 </html>
