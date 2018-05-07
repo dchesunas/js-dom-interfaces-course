@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            height: 2000px;
+            /* подсказка должна работать независимо от прокрутки */
+        }
+
+        .tooltip {
+            position: fixed;
+            padding: 10px 20px;
+            /* красивости... */
+
+            border: 1px solid #b3c9ce;
+            border-radius: 4px;
+            text-align: center;
+            font: italic 14px/1.3 arial, sans-serif;
+            color: #333;
+            background: #fff;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+
+<body>
+
+<p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+<p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+
+<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+
+<p>Прокрутите страницу, чтобы ссылки были вверху и проверьте, правильно ли показываются подсказки.</p>
+
+
+<script>
+    let showingTooltip;
+    const borderValue = 5,
+          pixels = 'px';
+
+    document.onmouseover = function(e) {
+        let target = e.target;
+
+        // Проверка делигирования на существование дата-атрибута для отображения тултипа
+        let tooltip = target.getAttribute('data-tooltip');
+        if (!tooltip) return;
+
+        // Создание тултипа
+        let tooltipElem = document.createElement('div');
+        tooltipElem.className = 'tooltip';
+        tooltipElem.innerHTML = tooltip;
+        document.body.appendChild(tooltipElem);
+
+        // Вычисление позиции тултипа
+        let coords = target.getBoundingClientRect();
+
+        let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+        if (left < 0) left = 0;
+
+        let top = coords.top - tooltipElem.offsetHeight - borderValue;
+        if (top < 0) {
+            top = coords.top + target.offsetHeight + borderValue;
+        }
+
+        tooltipElem.style.left = left + pixels;
+        tooltipElem.style.top = top + pixels;
+
+        showingTooltip = tooltipElem;
+    };
+
+    // Событие для того, чтобы прятать тултип
+    document.onmouseout = function() {
+        if (showingTooltip) {
+            document.body.removeChild(showingTooltip);
+            showingTooltip = null;
+        }
+
+    };
+</script>
+
+</body>
+
+</html>

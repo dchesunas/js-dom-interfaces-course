@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            height: 2000px;
+            /* подсказка должна работать при прокрутке */
+        }
+
+        .tooltip {
+            position: fixed;
+            z-index: 100;
+            padding: 10px 20px;
+            border: 1px solid #b3c9ce;
+            border-radius: 4px;
+            text-align: center;
+            font: italic 14px/1.3 arial, sans-serif;
+            color: #333;
+            background: #fff;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+        }
+
+        #house {
+            margin-top: 50px;
+            width: 400px;
+            border: 1px solid brown;
+        }
+
+        #roof {
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 20px solid brown;
+            margin-top: -20px;
+        }
+
+        p {
+            text-align: justify;
+            margin: 10px 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div data-tooltip="Это – внутренность дома" id="house">
+    <div data-tooltip="Это – крыша" id="roof"></div>
+
+    <p>Жили-были на свете три поросёнка. Три брата.</p>
+
+    <p>Все одинакового роста, кругленькие, розовые, с одинаковыми весёлыми хвостиками.</p>
+
+    <p>Даже имена у них были похожи. Звали поросят Ниф-Ниф, Нуф-Нуф и Наф-Наф. Всё лето они кувыркались в зелёной траве, грелись на солнышке, нежились в лужах.</p>
+
+    <p>Но вот наступила осень. <a href="http://ru.wikipedia.org/wiki/Три_поросёнка" data-tooltip="Читать дальше&hellip;">Наведи на меня</a></p>
+
+</div>
+
+<script>
+    let showingTooltip;
+    const borderValue = 5,
+          pixels = 'px';
+
+    document.onmouseover = function(e) {
+        let target = e.target;
+
+        // Пробегаем до первого тултипа
+        while (target !== this) {
+            let tooltip = target.getAttribute('data-tooltip');
+            if (tooltip) break;
+            target = target.parentNode;
+        }
+
+        // Проверка делигирования на существование дата-атрибута для отображения тултипа
+        let tooltip = target.getAttribute('data-tooltip');
+        if (!tooltip) return;
+
+        // Создание тултипа
+        let tooltipElem = document.createElement('div');
+        tooltipElem.className = 'tooltip';
+        tooltipElem.innerHTML = tooltip;
+        document.body.appendChild(tooltipElem);
+
+        // Вычисление позиции тултипа
+        let coords = target.getBoundingClientRect();
+
+        let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+        if (left < 0) left = 0;
+
+        let top = coords.top - tooltipElem.offsetHeight - borderValue;
+        if (top < 0) {
+            top = coords.top + target.offsetHeight + borderValue;
+        }
+
+        tooltipElem.style.left = left + pixels;
+        tooltipElem.style.top = top + pixels;
+
+        showingTooltip = tooltipElem;
+    };
+
+    // Событие для того, чтобы прятать тултип
+    document.onmouseout = function() {
+        if (showingTooltip) {
+            document.body.removeChild(showingTooltip);
+            showingTooltip = null;
+        }
+
+    };
+</script>
+
+</body>
+
+</html>

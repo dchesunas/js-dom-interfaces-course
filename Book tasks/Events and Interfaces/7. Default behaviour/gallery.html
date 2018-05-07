@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Галерея</title>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+<p><img id="largeImg" src="https://js.cx/gallery/img1-lg.jpg" alt="Large image"></p>
+
+<div id="thumbs" class="thumbs">
+    <a href="https://js.cx/gallery/img2-lg.jpg" class="thumbs__item" title="Image 2"><img src="https://js.cx/gallery/img2-thumb.jpg"></a>
+    <a href="https://js.cx/gallery/img3-lg.jpg" class="thumbs__item" title="Image 3"><img src="https://js.cx/gallery/img3-thumb.jpg"></a>
+    <a href="https://js.cx/gallery/img4-lg.jpg" class="thumbs__item" title="Image 4"><img src="https://js.cx/gallery/img4-thumb.jpg"></a>
+    <a href="https://js.cx/gallery/img5-lg.jpg" class="thumbs__item" title="Image 5"><img src="https://js.cx/gallery/img5-thumb.jpg"></a>
+    <a href="https://js.cx/gallery/img6-lg.jpg" class="thumbs__item" title="Image 6"><img src="https://js.cx/gallery/img6-thumb.jpg"></a>
+</div>
+
+
+<script>
+    let thumbs = document.querySelector('#thumbs'),
+        mainImage = document.querySelector('#largeImg');
+
+    thumbs.addEventListener('click', function (e) {
+        e.preventDefault();
+        let target = e.target;
+        console.log(e.target.tagName);
+        while (target !== thumbs) {
+            if (target.tagName === 'A') {
+                mainImage.setAttribute('src', target.getAttribute('href'));
+            }
+            target = target.parentNode;
+        }
+    });
+</script>
+
+</body>
+
+</html>
