@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    function init() {
+        console.log('инициализация', this.el);
+    }
+
+
+    function View (el) {
+        this.el = el;
+
+        this.init = init;
+
+        this.render = () => {
+            console.log('нарисовать компонент');
+        }
+    }
+
+    const view1 = new View('нода куда рендерить');
+    const view2 = new View('другая нода');
+
+    view1.init();
+    view2.init();
+
+    console.log(view1.init === view2.init);
+
+
+    const view3 = {
+        el: '1'
+    };
+
+    const PROTO = {
+        new_field: 'test',
+        init,
+    };
+
+    Object.setPrototypeOf(view3,  PROTO);
+    Object.getPrototypeOf(view3) === PROTO;
+
+
+    view3.new_field = '12341234';
+    console.log(view3.new_field, view3.__proto__.new_field);
+
+    console.log(view3.init())
+
+
+</script>
+</body>
+</html>

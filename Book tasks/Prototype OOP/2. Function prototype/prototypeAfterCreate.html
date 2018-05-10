@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1
+//    function Rabbit() {}
+//    Rabbit.prototype = {
+//        eats: true
+//    };
+//
+//    var rabbit = new Rabbit();
+//
+//    alert( rabbit.eats ); // true
+
+    //2
+//    function Rabbit() {}
+//    Rabbit.prototype = {
+//        eats: true
+//    };
+//
+//    var rabbit = new Rabbit();
+//
+//    Rabbit.prototype = {};
+//
+//    alert( rabbit.eats ); // true - объект создан до обнуления прототипа
+
+
+    // 3
+
+//    function Rabbit(name) {}
+//    Rabbit.prototype = {
+//        eats: true
+//    };
+//
+//    var rabbit = new Rabbit();
+//
+//    Rabbit.prototype.eats = false;
+//
+//    alert( rabbit.eats ); // false
+
+    // 4
+
+//    function Rabbit(name) {}
+//    Rabbit.prototype = {
+//        eats: true
+//    };
+//
+//    var rabbit = new Rabbit();
+//
+//    delete rabbit.eats;
+//
+//    alert( rabbit.eats ); // true - не удалит из прототипа
+
+
+    // 5
+
+    function Rabbit(name) {}
+    Rabbit.prototype = {
+        eats: true
+    };
+
+    var rabbit = new Rabbit();
+
+    delete Rabbit.prototype.eats;
+
+    alert( rabbit.eats ); // undefined - удаление из самого прототипа
+</script>
+</body>
+</html>

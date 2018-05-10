@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+
+<script type="text/javascript" charset="utf-8">
+    'use strict';
+
+    function init() {
+        console.log('инициализация', this.el);
+    }
+
+    function View (el) {
+        this.el = el;
+
+        this.name = 'view';
+    }
+
+    // публичные методы всех объектов
+    // которые попадут во все экземпляры классов
+    View.prototype.init = init;
+    View.prototype.render = () => {
+        console.log('нарисовать компонент');
+    };
+
+
+    function Button() {
+        View.apply(this, arguments);
+    }
+
+    Button.prototype = Object.assign({}, View.prototype, {
+        constructor: Button,
+    });
+
+    Button.prototype.newMethod = 'new';
+
+    const button = new Button('Я кнопка!');
+    console.log(button.el);
+
+    button.render();
+</script>
+</body>
+
+</html>

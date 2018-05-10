@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Animal(name) {
+        this.name = name;
+
+        // Объявили функцию в самом класс, а не в прототипе
+        this.walk = function() {
+            alert( "ходит " + this.name );
+        };
+
+    }
+
+    function Rabbit(name) {
+        // Затянули функци в самый верх списка вызовов.
+        Animal.apply(this, arguments);
+    }
+    Rabbit.prototype = Object.create(Animal.prototype);
+
+    // Вызов не доходит до прототипа
+    Rabbit.prototype.walk = function() {
+        alert( "прыгает " + this.name );
+    };
+
+    let rabbit = new Rabbit("Кроль");
+    rabbit.walk();
+</script>
+</body>
+</html>

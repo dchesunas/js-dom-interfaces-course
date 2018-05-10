@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #field {
+            background: url(https://js.cx/drag-heroes/field.png);
+            width: 800px;
+            height: 600px;
+            float: left;
+        }
+        /* герои и мяч (переносимые элементы) */
+
+        .hero {
+            background: url(https://js.cx/drag-heroes/heroes.png);
+            width: 130px;
+            height: 128px;
+            float: left;
+        }
+
+        #hero1 {
+            background-position: 0 0;
+        }
+
+        #hero2 {
+            background-position: 0 -128px;
+        }
+
+        #hero3 {
+            background-position: -120px 0;
+        }
+
+        #hero4 {
+            background-position: -125px -128px;
+        }
+
+        #hero5 {
+            background-position: -248px -128px;
+        }
+
+        #hero6 {
+            background-position: -244px 0;
+        }
+
+        .draggable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h2>Расставьте супергероев по полю.</h2>
+
+<p>Супергерои и мяч -- это элементы с классом "draggable". Сделайте так, чтобы их можно было переносить.</p>
+
+<p>Важно: если супергероя подносят к низу или верху страницы, она должна автоматически прокручиваться. Если страница помещается на вашем экране целиком и не имеет вертикальной прокрутки -- сделайте окно браузера меньше, чтобы протестировать эту возможность.</p>
+
+<p>Да, и ещё: супергерои ни при каких условиях не должны попасть за край экрана.</p>
+
+<div id="field">
+
+</div>
+
+<div class="hero draggable" id="hero1"></div>
+<div class="hero draggable" id="hero2"></div>
+<div class="hero draggable" id="hero3"></div>
+<div class="hero draggable" id="hero4"></div>
+<div class="hero draggable" id="hero5"></div>
+<div class="hero draggable" id="hero6"></div>
+
+<img src="https://js.cx/drag-heroes/ball.png" class="draggable">
+
+<div style="clear:both"></div>
+
+<script>
+    document.onmousedown = function(e) {
+        let elem = e.target;
+        if (elem.className && elem.className.indexOf('draggable') >= 0) { //фильтрует эелементы (только с классом draggable)
+            elem.ondragstart = function() {return false};
+
+            let coor = elem.getBoundingClientRect(), //получаем координыты елемента относительно окна браузера
+                osx = e.offsetX, //получаем смещение по Х указателя мыши относительно начала координат эелемента
+                osy = e.offsetY; // тоже по У
+            elem.style.position = 'fixed';
+            elem.style.top = coor.top + 'px';
+            elem.style.left = coor.left + 'px';
+
+            document.onmousemove = function(ev) { //тянем (функция в функции - тянем при нажатой кнопке)
+                let x = ev.clientX; //координата Х относительно окна браузера
+                let y = ev.clientY; //тоже по У
+                let winX = document.documentElement.clientWidth; //ширина окна браузера
+                let winY = document.documentElement.clientHeight; //высота окна браузера
+                if (x+coor.width > winX+osx) {x = winX - coor.width+osx} //не выдвигать элемент за правый край
+                if (x-osx < 0) {x = osx} // не выдвигать элемент за левый край
+                if (y<=osy) { //если елемент уперся в верх окна браузера
+                    scrollBy(0, -10); //прокрутить страницу вверх на 10рх
+                    y = osy; //не выдвигать элемент за верхний край
+                }
+                if (y >= (winY - coor.height + osy)) {
+                    scrollBy(0, 10); //прокрутить страницу вниз на 10рх
+                    y = winY-coor.height - osy; //не выдвигать элемент за нижний край
+                }
+                elem.style.left = x - osx + 'px'; //задаем координату Х без смещения для движения элемента
+                elem.style.top = y - osy + 'px'; // тоже по У
+                removeSelect(); //запретить стандартное выделение
+            }
+        }
+    };
+    document.onmouseup = function(e) { //отпустили кнопку
+        let elem = e.target; //наш элемент
+        if (elem.className && elem.className.indexOf('draggable') >= 0) { //действие только для супергероя или мяча
+            elem.style.position = 'absolute'; // позиционеруем элемент относительно документа
+            elem.style.top = parseInt(elem.style.top) + pageYOffset + 'px'; //изменяем координату Y от fixed к absolute
+            elem.style.left = parseInt(elem.style.left) + pageXOffset + 'px'; // тоже по X
+        }
+        document.onmousemove = function() {return false}; //отменяем перемещение элемента
+    };
+    function removeSelect() { //функция - убрать стандартное выделение
+        let b = document.body; //по всему документу
+        b.style.webkitUserSelect = b.style.mozUserSelect = b.style.msUserSelect = 'none'; //добавляем свойство CSS - запретить выделение
+    }
+</script>
+
+</body>
+</html>

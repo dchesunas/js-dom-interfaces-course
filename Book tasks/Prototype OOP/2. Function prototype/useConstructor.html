@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Func() {}
+    let obj = new Func();
+    console.dir(obj.__proto__);
+    let obj2 = new obj.constructor();
+    console.dir(obj2.__proto__);
+</script>
+</body>
+</html>

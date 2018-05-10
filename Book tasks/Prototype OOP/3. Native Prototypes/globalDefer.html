@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f() {
+        alert( "привет" );
+    }
+
+    Function.prototype.defer = function (ms) {
+        setTimeout(this, ms);
+    };
+
+    f.defer(1000); // выведет "привет" через 1 секунду
+</script>
+</body>
+</html>

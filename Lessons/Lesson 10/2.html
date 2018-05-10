@@ -2,27 +2,79 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <script src="view.js"></script>
-    <script src="index.js"></script>
+    <style>
+        .voter {
+            display: flex;
+            align-items: center;
+            font-family: Consolas, "Lucida Console", monospace;
+        }
+
+        .up, .down{
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .vote {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-<div id="container">
-    <!-- корзина....-->
-    <div>
-      <span>
-        Номер
-      </span>
-        <span>
-        Товар
-      </span>
-        <span>
-        Цена
-      </span>
-    </div>
+<div id="voter" class="voter">
+    <span class="down">-</span>
+    <span class="vote">0</span>
+    <span class="up">+</span>
 </div>
 
+
 <script type="text/javascript" charset="utf-8">
-    const cartView = new CartView(container, cart);
+    'use strict';
+
+    function Voter(options) {
+        let el = options.elem;
+
+        // данные
+        let num;
+
+        // Отдельно добавил приватную метод проверки текушего значения vote
+        function getVote() {
+            num = el.querySelector('.vote').textContent;
+        }
+
+        function up() {
+            ++num;
+            render();
+
+        }
+
+        function down() {
+            --num;
+            render();
+
+        }
+
+        function render() {
+            el.querySelector('.vote').textContent = num;
+        }
+
+        // Это публичный метод
+        this.setVote = (n) => {
+            num = n;
+
+            render();
+        };
+
+        el.querySelector('.up').addEventListener('click', up);
+        el.querySelector('.down').addEventListener('click', down);
+    }
+
+    const voter = new Voter({
+        elem: document.getElementById('voter')
+    });
+    voter.setVote(8);
 </script>
 </body>
 

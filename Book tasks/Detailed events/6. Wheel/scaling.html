@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="height: 2000px">
+<div id="resizable">Some text</div>
+
+<script>
+    document.addEventListener('wheel', function (e) {
+       if (e.target.id !== 'resizable') return;
+       alert('123');
+        e.target.style.transform = elem.style.WebkitTransform = elem.style.MsTransform = 'scale(1.5)';
+    });
+</script>
+
+</body>
+</html>

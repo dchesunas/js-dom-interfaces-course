@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Часики в консоли</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<script>
+
+    function Clock(options) {
+        this._template = options.template;
+        this._timer = 0;
+    }
+
+    Clock.prototype.render = function () {
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = '0' + hours;
+
+        let min = date.getMinutes();
+        if (min < 10) min = '0' + min;
+
+        let sec = date.getSeconds();
+        if (sec < 10) sec = '0' + sec;
+
+        let output = this._template.replace('h', hours).replace('m', min).replace('s', sec);
+
+        console.log(output);
+    };
+
+    Clock.prototype.start = function() {
+        this.render();
+        this._timer = setInterval(this.render.bind(this), 1000);
+    };
+
+    Clock.prototype.stop = function() {
+        clearInterval(this._timer);
+    };
+
+    let clock = new Clock({
+        template: 'h:m:s'
+    });
+    clock.start();
+</script>
+
+</body>
+
+</html>
